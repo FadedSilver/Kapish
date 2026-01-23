@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday Kapish</title>
+
+<style>
+body{
+  margin:0;
+  height:100vh;
+  overflow:hidden;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(120deg,#fde2e4,#e0f7fa,#ede7f6);
+  animation: bgShift 10s infinite alternate;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+@keyframes bgShift{
+  0%{filter:hue-rotate(0deg);}
+  100%{filter:hue-rotate(40deg);}
+}
+
+/* floating icons */
+.float{
+  position:absolute;
+  font-size:18px;
+  opacity:0.7;
+  animation: floatUp 8s linear infinite;
+}
+@keyframes floatUp{
+  from{transform:translateY(110vh);}
+  to{transform:translateY(-10vh);}
+}
+
+/* balloons */
+.balloon{
+  position:absolute;
+  bottom:-80px;
+  width:45px;
+  height:65px;
+  border-radius:50%;
+  animation: balloonUp linear infinite;
+  opacity:0.85;
+}
+.balloon::after{
+  content:"";
+  position:absolute;
+  bottom:-14px;
+  left:50%;
+  width:2px;
+  height:14px;
+  background:#555;
+}
+@keyframes balloonUp{
+  from{transform:translateY(0);}
+  to{transform:translateY(-120vh);}
+}
+
+/* confetti */
+.confetti{
+  position:absolute;
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  opacity:0.9;
+  animation: confettiFall 1.5s linear infinite;
+}
+@keyframes confettiFall{
+  from{transform:translateY(-10px);}
+  to{transform:translateY(120vh);}
+}
+
+/* card */
+.card{
+  background:white;
+  padding:30px;
+  border-radius:26px;
+  width:85%;
+  max-width:420px;
+  text-align:center;
+  box-shadow:0 0 30px rgba(180,140,255,0.6);
+  position:relative;
+  animation: pop 1s ease;
+}
+@keyframes pop{
+  from{transform:scale(0.85);opacity:0;}
+  to{transform:scale(1);opacity:1;}
+}
+
+h1{font-size:26px;}
+p{font-size:16px;line-height:1.4;}
+
+button{
+  margin-top:18px;
+  padding:12px 22px;
+  border:none;
+  border-radius:30px;
+  background:#7e57c2;
+  color:white;
+  font-size:15px;
+  cursor:pointer;
+  animation:pulse 2s infinite;
+}
+@keyframes pulse{
+  0%{box-shadow:0 0 0 0 rgba(126,87,194,0.7);}
+  70%{box-shadow:0 0 0 15px rgba(126,87,194,0);}
+}
+
+#message{display:none;margin-top:18px;}
+</style>
+</head>
+
+<body>
+
+<!-- floating icons -->
+<div class="float" style="left:10%;animation-delay:0s">&#10024;</div>
+<div class="float" style="left:25%;animation-delay:2s">&#11088;</div>
+<div class="float" style="left:45%;animation-delay:4s">&#128150;</div>
+<div class="float" style="left:65%;animation-delay:1s">&#10024;</div>
+<div class="float" style="left:85%;animation-delay:3s">&#11088;</div>
+
+<!-- balloons -->
+<div class="balloon" style="left:8%;background:#f48fb1;animation-duration:14s;"></div>
+<div class="balloon" style="left:22%;background:#90caf9;animation-duration:12s;"></div>
+<div class="balloon" style="left:40%;background:#ce93d8;animation-duration:15s;"></div>
+<div class="balloon" style="left:58%;background:#81d4fa;animation-duration:13s;"></div>
+<div class="balloon" style="left:75%;background:#f48fb1;animation-duration:16s;"></div>
+<div class="balloon" style="left:90%;background:#b39ddb;animation-duration:14s;"></div>
+
+<!-- confetti -->
+<script>
+for(let i=0;i<60;i++){
+  let c=document.createElement("div");
+  c.className="confetti";
+  c.style.left=Math.random()*100+"%";
+  c.style.background=`hsl(${Math.random()*360},80%,60%)`;
+  c.style.animationDelay=Math.random()*1.5+"s";
+  document.body.appendChild(c);
+}
+</script>
+
+<div class="card">
+  <h1>&#127874; Happy 14th Birthday Kapish &#127874;</h1>
+   <p>Today's page is special, just like you</p>
+
+  <button id="btn">&#127925; Tap kar bhai</button>
+
+  <div id="message">
+  <p>Hey Kapish, hope today feels special in its own way</p>
+  <p>You’re growing up fast, and honestly doing great</p>
+  <p>Wishing you a year full of good moments, progress, and peace</p>
+  <p>Enjoy your day and don’t forget the cake</p>
+</div>
+
+<script>
+const btn=document.getElementById("btn");
+const song=document.getElementById("song");
+const msg=document.getElementById("message");
+
+btn.onclick=()=>{
+  msg.style.display="block";
+  song.currentTime=0;
+  song.play().catch(()=>{});
+};
+</script>
+
+</body>
+</html>
